@@ -7,6 +7,7 @@ function generatePassword(){
 }
 
 function getInputs(){
+  var criteria = [];
   var length = getNum();
   var lowers = confirm("Do you want Lower case letters included?");
   var capitals = confirm("Do you want capital letters included?");
