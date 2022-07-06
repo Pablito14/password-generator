@@ -1,10 +1,9 @@
 function generatePassword(){
-
-  var password;
   
   var passwordLength = getPwdL();
-  getCriteria();
-
+  var allowedChars = getCriteria();
+  console.log("allowed characters: ", allowedChars);
+  var password = getPassword(passwordLength, getCriteria);
   return password;
 }
 
@@ -56,7 +55,7 @@ function getCriteria(){
     // uppercase activation 
     if(useUpperC){
       var upperCases = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-      UpperCases.forEach(element => {
+      upperCases.forEach(element => {
         allowedChars.push(element)
       });
     }
@@ -78,10 +77,20 @@ function getCriteria(){
     }
 
   }
-  console.log(allowedChars);
+  return allowedChars;
 }
 
+// helper function to use the allowable characters in the final randomizer
+function getPassword(length, criteria){
+  var temp = [];
+  for(var i = 0; i < length; i ++){
+    var randomChar = Math.floor(Math.random() * length);
+    temp.push(randomChar);
+  }
+  return temp;
+}
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 // Assignment Code, DO NOT EDIT ANTHING  BELOW THIS LINE
 var generateBtn = document.querySelector("#generate");
 
